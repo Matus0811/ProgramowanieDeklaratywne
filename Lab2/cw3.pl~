@@ -1,0 +1,4 @@
+na(X,Y).
+pod(X,Y).
+miedzy(X,Y,Z).
+
