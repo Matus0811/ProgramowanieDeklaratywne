@@ -1,0 +1,223 @@
+%Pawe³ Raciborski
+%Kamil Matusiak
+
+%Temat Urz¹dzenia medyczne
+%
+%---------------------------------------------------------
+
+%Opis dzia³ania programu
+%Program opisuje dzia³anie sklepu z urz¹dzeniami medycznymi.
+%Wypisuje wszystkie produkty dostêpne w sklepie
+%Wyœwietla produkty z podzia³em na kategorie
+%Wyœwietla produkty do okreœlonej ceny
+%Wysztkie te dzia³ania realizowane s¹ poprzez zdefiniowane regu³y
+%Program zawiera te¿ ma³e menu.
+
+
+%Predykat urzadzenie/5 definiuje
+%urzadzenie(kod_produktu,kategoria,nazwa produktu,opis,cena)
+urzadzenie('USG_1','Aparaty USG','Arietta 50','opis',63215.99).
+urzadzenie('USG_2','Aparaty USG','Arietta cos tam 50','opis',63215.99).
+
+%regu³y
+%najwieksza_ilosc_produktu/1
+%wyswietl_urzadzenia_do_ceny/1
+%wypisz_ilosc_produktow/0
+%print_menu/0
+%run_option/0
+%make_choice_product_category/1
+%print_product_category/1
+
+%APARATY USG
+urzadzenie('USG_3','Aparaty USG','Kompaktowy aparat DC-30', 'DC-30 to nowoczesne urz¹dzenie ultrasonograficzne, które wyró¿nia siê zaawansowanymi funkcjami, umo¿liwiaj¹cymi uzyskanie wysokiej jakoœci obrazów. Dodatkowo, oferuje ono funkcjê obrazowania 4D z iPage, co stanowi idealne rozwi¹zanie w konkurencyjnej grupie cenowej.', 50000.76).
+urzadzenie('USG_4','Aparaty USG','Przenoœny aparat USG Mindray DP-10','Przenoœny ultrasonograf DP-10 firmy Mindray to wszechstronne urz¹dzenie o dobrej jakoœci obrazu, lekkiej wadze i ³atwoœci obs³ugi. Dziêki wydajnemu procesorowi Intela i ulepszonej technice przetwarzania obrazu, zapewnia dok³adne i bogate doœwiadczenia ultrasonograficzne.', 15000.26).
+urzadzenie('USG_5','Aparaty USG','Ultrasonograf Philips ClearVue 850','Ultrasonograf ClearVue 850 z technologi¹ Active Array zapewnia doskona³¹ jakoœæ obrazu i zawiera funkcje takie jak 3D/4D z Auto Face Reveal oraz adaptacyjne przetwarzanie XRES. Dodatkowo, automatyczna analiza dopplerowska High Q umo¿liwia szybkie i dok³adne wyniki.', 30000.99).
+
+%Kardiologia
+urzadzenie('KARD_1','Kardiologia','Defibrylator AED iPAD SP1','AED iPAD SP1 to pó³automatyczny defibrylator zewnêtrzny z 5-letni¹ gwarancj¹, zapisem do 5 operacji na karcie SD i mo¿liwoœci¹ dostosowania g³oœnoœci. Zestaw zawiera elektrody dla doros³ych, bateriê litow¹ i torbê transportow¹. Opcjonalnie dostêpne s¹ elektrody pediatryczne.',5900.00).
+urzadzenie('KARD_2','Kardiologia','Aparat EKG BTL CardioPoint-EKG C300','Oprogramowanie do komputerowego 12-kana³owego EKG pracuj¹ce w œrodowisku Windows. Cena obejmuje: oprogramowanie BTL CardioPoint C300, przewód po³¹czeniowy, konwerter RS232-USB.',9999.99).
+urzadzenie('KARD_3','Kardiologia','Defibrylator treningowy XFT-120C+','AED XFT-120C+ - defibrylator treningowy z komunikatami g³osowymi, elektrodami dla doros³ych i dzieci, 10 scenariuszami szkoleniowymi, opcj¹ zasilania bateryjnego i przenoœnym etui.',799.99).
+
+%Meble Medyczne
+urzadzenie('MEBMED_1','Meble Medyczne','Kozetka lekarska','Stó³ rehabilitacyjny SR-Z to wygodna kozetka lekarska o wysokiej jakoœci wykonania. Idealna do gabinetów medycznych i zabiegowych.',850.00).
+urzadzenie('MEBMED_2','Meble Medyczne','Taboret Cromo Lux','CROMO LUX to luksusowy taboret z naszej oferty. Posiada chrnajomowan¹ konstrukcjê z podnó¿kiem i kó³kami, oraz wygodne oparcie. Jest idealnym rozwi¹zaniem dla osób pracuj¹cych w d³ugotrwa³ej pozycji siedz¹cej. Siedzisko wykonane z wysokiej jakoœci materia³u skóropodobnego dostêpne jest w ró¿norodnej gamie kolorów.',850.00).
+urzadzenie('MEBMED_3','Meble Medyczne','Parawan Teleskopowy œcienny', 'Parawan wykonany jest ze stali, posiada uchwyt do mocowania przy œcianach. Wysiêgnik parawanu wykonany jest ze stali sk³adaj¹cy siê z wysuwanych teleskopowo elementów.',960.00).
+urzadzenie('MEBMED_3','Meble Medyczne','Asystor stomatologiczny AS-3', 'Mobilny asystor stomatologiczny AS-3, wyposa¿ony w trzy szuflady, zapewniaj¹cy funkcjonalnoœæ i mobilnoœæ. Idealny do stosowania w placówkach stomatologicznych i innych gabinetach medycznych. Stabilna konstrukcja i ³atwoœæ dezynfekcji gwarantuj¹ higieniczne warunki pracy. Estetyczny wygl¹d i dostêpne kolory szafki dostosowuj¹ siê do wnêtrza gabinetu. Szklany blat, chromowana podstawa i kolumna gazowa u³atwiaj¹ utrzymanie czystoœci. System jezdny umo¿liwia regulacjê wysokoœci, a trzy szuflady zapewniaj¹ przechowywanie niezbêdnych materia³ów. Bezpieczne uchwyty szuflad nie wystaj¹ poza bry³ê mebla.',1950.00).
+urzadzenie('MEBMED_4','Meble Medyczne','Biurko Lekarskie', 'Lekarskie biurko o uniwersalnym zastosowaniu. Posiada praktyczne rozwi¹zania do przechowywania dokumentów i materia³ów biurowych, z dwoma kontenerkami z zamkami bêbnowymi i trzema szufladami po ka¿dej stronie. Stela¿ z wytrzyma³ymi profilami stalowymi, a 25-milimetrowy blat z melaniny zapewniaj¹ wygodê u¿ytkowania. Regulowane nogi zakoñczone stopkami umo¿liwiaj¹ dostosowanie wysokoœci blatu. Dostarczane w elementach.',4450.00).
+urzadzenie('MEBMED_5','Meble Medyczne','Fotel do pobrania krwi','Fotel zabiegowy FoZa Basic Mobil to specjalistyczne urz¹dzenie do przewo¿enia i przeprowadzania badañ oraz zabiegów medycznych. Wykonany z trwa³ych materia³ów, tapicerowany segmentami siedziska, oparcia pleców i podudzia. Regulacja k¹ta segmentów oparcia pleców i podudzia za pomoc¹ sprê¿yn gazowych. Idealny do zastosowañ w opiece paliatywnej, szpitalach i domach opieki spo³ecznej.',5140.00).
+
+%Sprzêt do æwiczeñ fitness
+urzadzenie('FITN_1','Sprzêt do æwiczeñ fitness','Atlas Global Gym G152X', 'Atlas treningowy BH Fitness Global Gym Plus to wielofunkcyjne urz¹dzenie z 3 stanowiskami do æwiczeñ, które umo¿liwia kompleksowy trening si³owy. Zawiera g³ówne stacje wyciskania, wyci¹gu górnego i prasy do nóg, a tak¿e suwnicê na nogi i porêcze do podci¹gania i treningu miêœni brzucha. Wykonany z wysokiej jakoœci materia³ów, zapewnia stabilnoœæ i komfort podczas æwiczeñ, a system ³o¿yskowanych bloczków gwarantuje p³ynne prowadzenie linek.',7999.00).
+urzadzenie('FITN_2','Sprzêt do æwiczeñ fitness', 'Bie¿nia BH Fitness i.F1', 'To kompaktowa i w pe³ni wyposa¿ona bie¿nia, idealna dla pocz¹tkuj¹cych i zaawansowanych biegaczy. Oferuje ³atw¹ regulacjê prêdkoœci i k¹ta nachylenia, ochronê stawów dziêki amortyzacji Run+ i 6 elastomerom oraz mo¿liwoœæ monitorowania treningu i kontrolowania têtna za pomoc¹ rozbudowanego komputera. Bie¿nia jest tak¿e kompatybilna z urz¹dzeniami mobilnymi poprzez Bluetooth i oferuje dostêp do ró¿nych aplikacji treningowych.', 9999.01).
+urzadzenie('FITN_3','Sprzêt do æwiczeñ fitness','Orbitrek Eliptyk ERX-3000','To wysokiej jakoœci urz¹dzenie do æwiczeñ, które pomaga w osi¹gniêciu wymarzonej sylwetki i poprawie kondycji fizycznej. Wyposa¿ony w wyœwietlacz LED, umo¿liwiaj¹cy monitorowanie czasu, dystansu, spalonych kalorii i têtna, zapewnia pe³n¹ kontrolê nad treningiem i postêpem. To idealne rozwi¹zanie dla osób, które pragn¹ efektywnie æwiczyæ w domu.',6290.00).
+urzadzenie('FITN_4','Sprzêt do æwiczeñ fitness','Rower poziomy LK7750 LED','BH Fitness to profesjonalny stacjonarny rower poziomy, przeznaczony do u¿ytku komercyjnego w si³owniach i klubach. Pozwala na æwiczenia w pozycji pó³le¿¹cej, zapewniaj¹c bezpieczeñstwo dla krêgos³upa. Rower posiada elektromagnetyczny system oporu o maksymalnej wartoœci 500 W i 20-stopniowym zakresie, gwarantuj¹cy p³ynne i ciche dzia³anie. Wyposa¿ony jest w komputer z czytelnym wyœwietlaczem LED, umo¿liwiaj¹cy precyzyjne mierzenie danych treningowych i korzystanie z ró¿nych programów treningowych, takich jak sterowanie moc¹, dystansem lub têtnem HRC, w celu zwiêkszenia efektywnoœci treningów.', 12490.00).
+urzadzenie('FITN_5','Sprzêt do æwiczeñ fitness','Wioœlarz RWX Air Cross TOORX', 'Toorx RWX Air Cross to profesjonalny wioœlarz powietrzny zaprojektowany do intensywnych treningów. Wykonany z lekkiego, ale wytrzyma³ego aluminium, zapewnia trwa³oœæ i wygodê u¿ytkowania. Na czytelnym wyœwietlaczu komputera treningowego mo¿na monitorowaæ podstawowe parametry, takie jak dystans, spalone kalorie i puls. Wioœlarz RWX Air Cross anga¿uje wiele miêœni podczas æwiczeñ, a dziêki swojej konstrukcji minimalizuje ryzyko kontuzji. Jest odpowiedni dla osób w ró¿nym wieku i o ró¿nym stopniu zaawansowania treningowego.',5990.00).
+
+%Ratownictwo medyczne
+urzadzenie('RATMED_1','Ratownictwo medyczne','Krzese³ko transportowe p³achtowe', 'Krzese³ko p³achtowe TRM-71 jest wyposa¿one w regulowane pasy zamykane na klamry zatrzaskowe, umo¿liwiaj¹ce zabezpieczenie poszkodowanego, oraz wzmocnione uchwyty transportowe. Wykonane z wodoodpornej tkaniny, krzes³o jest ³atwe do utrzymania w czystoœci. W komplecie znajduje siê pokrowiec wykonany z tej samej tkaniny, z zamykanymi na klamry uchwytami, które umo¿liwiaj¹ przymocowanie go na przyk³ad w karetce. Po z³o¿eniu krzese³ko zajmuje bardzo ma³o miejsca.',135.00).
+urzadzenie('RATMED_2','Ratownictwo medyczne','Krzese³ko ewakuacyjne EVEREST','Model EVEREST to krzes³o ewakuacyjne, które zapewnia rozwi¹zanie zarówno do ewakuacji ludzi po schodach w dó³, jak i w górê, a tak¿e mo¿e byæ u¿ywane jako krzes³o do transportu. Jest wyposa¿one w silnik elektryczny, umo¿liwiaj¹cy bezpieczne poruszanie siê w obie kierunki. Krzes³o posiada regulowany teleskopowy zag³ówek/oparcie, paski na taliê oraz wyœcie³ane siedzenia, zapewniaj¹ce bezpieczeñstwo osoby ewakuowanej. Blokowane tylne ko³a i solidny, wygodny uchwyt dodatkowo zwiêkszaj¹ bezpieczeñstwo. Krzes³o EVEREST mo¿e równie¿ s³u¿yæ do przenoszenia osób niepe³nosprawnych lub o ograniczonej zdolnoœci poruszania siê. Ma kompaktowe wymiary po z³o¿eniu i jest wyposa¿one w bateriê, która umo¿liwia korzystanie z niego nawet po roz³adowaniu siê baterii. Maksymalny udŸwig wynosi 210 kg, a w komplecie znajduje siê instrukcja i haki monta¿owe.',13000.00).
+urzadzenie('RATMED_3','Ratownictwo medyczne','Kuferek Lekarski','Kuferek lekarski pierwszej pomocy o pojemnoœci 17 litrów zapewnia praktyczne rozwi¹zania i wygodê w u¿ytkowaniu. Wnêtrze kuferka wykonane jest z ³atwo zmywalnej tkaniny Nylon 210D, a dno zabezpieczone jest czterema gumowymi stopkami. Wewn¹trz znajduj¹ siê dwie ruchome przegrody oraz cztery kieszenie z siatk¹ zakoñczone gumk¹. Kuferek jest ³atwy w otwieraniu i zamykaniu dziêki klamrom zatrzaskowym. Posiada równie¿ opiankowany uchwyt oraz odpinany pas noœny z regulowanym antypoœlizgowym naramiennikiem, co u³atwia jego przenoszenie.',165.00).
+urzadzenie('RATMED_4','Ratownictwo medyczne','Mata ratownicza Cordura','Maty transportowe zosta³y zaprojektowane do bezpiecznego przemieszczania osób w pozycji le¿¹cej po schodach i na poziomym terenie. \
+Umo¿liwiaj¹ dwóm osobom ³atw¹ ewakuacjê osoby o ograniczonej zdolnoœci poruszania siê w sytuacjach zagro¿enia.\
+Maty s¹ wykonane z wytrzyma³ego materia³u Cordura, posiadaj¹ elementy odblaskowe dla lepszej widocznoœci w trudnych warunkach, a dziêki pasom i karabiñczykom mo¿na je przypi¹æ do nogi, zapewniaj¹c "wolne rêce dla rot".\
+Doskonale sprawdzaj¹ siê w trudnym terenie i s¹ polecane dla wyspecjalizowanych s³u¿b oraz do transportu osób o wadze do 210 kg.',770.00).
+urzadzenie('RATMED_5','Ratownictwo medyczne','Materac Ewakuacyjna Prime', 'Nosze transportowe TRM-34 zosta³y zaprojektowane do bezpiecznego transportu osób o wadze do 210 kg w pozycji le¿¹cej, zarówno po schodach, jak i na poziomym pod³o¿u. Posiadaj¹ dodatkowe zabezpieczenie na g³owê i umo¿liwiaj¹ dwóm osobom ³atw¹ ewakuacjê osoby o ograniczonej zdolnoœci poruszania siê w przypadku zagro¿enia. S¹ idealne do zastosowania w domach opieki i miejscach, gdzie krzes³a ewakuacyjne nie s¹ praktyczne, takich jak osoby le¿¹ce, po zabiegu lub niestabilne psychicznie.', 3920.00).
+urzadzenie('RATMED_6','Ratownictwo medyczne','Nosze p³achtowe TRM-34', 'Nosze transportowe TRM-34 to wytrzyma³e i ³atwe do utrzymania w czystoœci p³achtowe nosze z kieszeni¹, zapobiegaj¹c¹ obsuwaniu siê przenoszonego. Wyposa¿one w system taœm i 10 wzmocnionych uchwytów transportowych z gumowymi r¹czkami, u³atwiaj¹cymi trzymanie noszy.', 355.00).
+
+%Wypisuje ilosc produktow danego id
+ilosc_produktow_w_magazynie('USG_1',3).
+ilosc_produktow_w_magazynie('USG_2',13).
+ilosc_produktow_w_magazynie('USG_3',5).
+ilosc_produktow_w_magazynie('USG_4',16).
+ilosc_produktow_w_magazynie('USG_5',3).
+ilosc_produktow_w_magazynie('KARD_1',2).
+ilosc_produktow_w_magazynie('KARD_2',8).
+ilosc_produktow_w_magazynie('KARD_3',7).
+ilosc_produktow_w_magazynie('MEBMED_1',6).
+ilosc_produktow_w_magazynie('MEBMED_2',11).
+ilosc_produktow_w_magazynie('MEBMED_3',8).
+ilosc_produktow_w_magazynie('MEBMED_4',15).
+ilosc_produktow_w_magazynie('MEBMED_5',21).
+ilosc_produktow_w_magazynie('FITN_1',16).
+ilosc_produktow_w_magazynie('FITN_2',3).
+ilosc_produktow_w_magazynie('FITN_3',6).
+ilosc_produktow_w_magazynie('FITN_4',5).
+ilosc_produktow_w_magazynie('FITN_5',12).
+ilosc_produktow_w_magazynie('RATMED_1',2).
+ilosc_produktow_w_magazynie('RATMED_2',5).
+ilosc_produktow_w_magazynie('RATMED_3',27).
+ilosc_produktow_w_magazynie('RATMED_4',31).
+ilosc_produktow_w_magazynie('RATMED_5',16).
+ilosc_produktow_w_magazynie('RATMED_6',19).
+
+
+%najwieksza_ilosc_produktu/1
+%wyswietla produkt o najwiekszej wartosci
+%funkcje wywolujemy jako
+% najwieksza_ilosc_produktu('RATMED_4'). - sprawdza czy w magazynie tego
+% produktu jest najwiêcej
+najwieksza_ilosc_produktu(Produkt) :-
+    ilosc_produktow_w_magazynie(Produkt, Ilosc),
+    \+ (ilosc_produktow_w_magazynie(_, InnaIlosc), InnaIlosc > Ilosc).
+
+%wyswietl_urzadzenia_do_ceny/1
+%wyswietl_urzadzenia_do_ceny(7000) - wyswietla urzadzenia do danej ceny
+wyswietl_urzadzenia_do_ceny(MaxCena) :-
+    urzadzenie(Id, Kategoria, Nazwa, Opis, Cena),
+    Cena =< MaxCena,
+    write('KOD PRODUKTU: '),write(Id),nl,
+    write('KATEGORIA: '),write(Kategoria),nl,
+    write('NAZWA PRODUKTU: '),write(Nazwa),nl,
+    write('OPIS PRODUKTU: '),write(Opis),nl,
+    write('CENA: '),write(Cena),write('z³'),nl,
+    write('-----------------------------------------------------'),nl,
+    fail.
+
+% Predykat wypisuj¹cy iloœæ produktów w sklepie
+% Wywo³ujemy regu³ê wypisz_ilosc_produktów
+% Wyswietla ona ilosc produktow w magazynie
+wypisz_ilosc_produktow :-
+    findall(Nazwa, ilosc_produktow_w_magazynie(Nazwa, _), Produkty),
+    wypisz_ilosc_produktow(Produkty).
+
+% Predykat wypisuj¹cy iloœæ produktów dla konkretnej listy produktów
+wypisz_ilosc_produktow([]).
+wypisz_ilosc_produktow([Produkt|Reszta]) :-
+    ilosc_produktow_w_magazynie(Produkt, Ilosc),
+    format('Iloœæ ~w: ~w~n', [Produkt, Ilosc]),
+    wypisz_ilosc_produktow(Reszta).
+
+
+%wyœwietla menu print_menu/0
+%Za pomoc¹ tego predykatu uruchamiamy aplikacje
+%Przekazujemy liczbe która odpowiada menu
+% wykonanie programu: print_menu.
+print_menu:-
+    repeat,
+    write("Wybierz opcje:"),nl,
+    write("1. Wypisz urz¹dzenia wybranej kategorii"),nl,
+    write("2. Wypisz wszystkie produkty"),nl,
+    write("3. Serwis naprawczy"),nl,
+    write("4. Informacje o Covid-19"),nl,
+    write("Podaj opcjê: "),
+    read(Wybor),
+    run_option(Wybor).
+
+
+%Wybór kategorii urz¹dzeñ
+%run_option/1
+run_option(1):-
+    write("Wybierz kategoriê urz¹dzeñ:"),nl,
+    write("1. Aparaty USG"),nl,
+    write("2. Kardiologia"),nl,
+    write("3. Meble medyczne"),nl,
+    write("4. Sprzêt do æwiczeñ fitness"),nl,
+    write("5. Ratownictwo medyczne"),nl,
+    read(Kategoria),
+    make_choice_product_category(Kategoria).
+
+%Wyswietla wszystkie produkty
+run_option(2):-
+    print_product_category(_).
+
+%Program wyœwietla formularz
+run_option(3):-
+    write('Podaj sowoje dane dzieki ktorym skontaktujemy sie z toba'),nl,
+    write('Podaj swoje imiê: '),
+    read(Imie),
+    write('Podaj swoje nazwisko: '),
+    read(Nazwisko),
+    write('Podaj swój numer telefonu: '),
+    read(NumerTelefonu),
+    write('Opisz swój problem: '),
+    read(OpisProblemu),
+    format('Dziêkujemy, ~w ~w! Twój numer telefonu to ~w. Twój problem: ~w', [Imie, Nazwisko, NumerTelefonu, OpisProblemu]).
+
+run_option(4):-
+    writeln('Informacje o Covid-19:'),
+    writeln('----------------------'),
+    writeln('1. Covid-19 to choroba wywo³ana przez koronawirusa SARS-CoV-2.'),
+    writeln('2. Objawy Covid-19 mog¹ obejmowaæ gor¹czkê, kaszel, trudnoœci w oddychaniu, utratê smaku i zapachu,'),
+    writeln('   bóle miêœni i zmêczenie.'),
+    writeln('3. Choroba mo¿e mieæ ró¿ne nasilenie, od ³agodnych objawów do ciê¿kiej niewydolnoœci oddechowej i œmierci.'),
+    writeln('4. Covid-19 przenosi siê g³ównie drog¹ kropelkow¹, przez kontakt z zaka¿onymi osobami lub zanieczyszczonymi powierzchniami.'),
+    writeln('5. Aby zapobiegaæ rozprzestrzenianiu siê Covid-19, nale¿y przestrzegaæ zaleceñ higieny, takich jak czêste mycie r¹k,'),
+    writeln('   noszenie maseczek, utrzymanie dystansu spo³ecznego i unikanie du¿ych zgromadzeñ.'),
+    writeln('6. Szczepienia przeciwko Covid-19 s¹ dostêpne i stanowi¹ skuteczn¹ metodê ochrony przed chorob¹.'),
+    writeln('   Zaleca siê, aby spo³eczeñstwo by³o zaszczepione, aby zmniejszyæ ryzyko zachorowania i powik³añ.'),
+    writeln('----------------------').
+
+%Wybiera w zale¿noœci od wartoœci kategoriê
+%Wartoœæ podajemy do konsoli
+%make_choice_product_category/1
+make_choice_product_category(1):-
+    write('PRODUKTY Z KATEGORII Aparaty USG'),nl,
+    print_product_category('Aparaty USG'),nl.
+
+make_choice_product_category(2):-
+    write('PRODUKTY Z KATEGORII Kardiologia'),nl,
+    print_product_category('Kardiologia'),nl.
+
+make_choice_product_category(3):-
+    write('PRODUKTY Z KATEGORII Meble medyczne'),nl,
+    print_product_category('Meble Medyczne'),nl.
+
+make_choice_product_category(4):-
+    write('PRODUKTY Z KATEGORII Sprzêt do æwiczeñ fitness'),nl,
+    print_product_category('Sprzêt do æwiczeñ fitness'),nl.
+
+make_choice_product_category(5):-
+    write('PRODUKTY Z KATEGORII Ratownictwo medyczne'),nl,
+    print_product_category('Ratownictwo medyczne'),nl.
+
+%Wypisuje produkt z podanej kategorii
+%print_product_category/1 - regu³a
+print_product_category(Kategoria):-
+    urzadzenie(KodProduktu,Kategoria,Nazwa,Opis,Cena),
+    write('KOD PRODUKTU: '),write(KodProduktu),nl,
+    write('KATEGORIA: '),write(Kategoria),nl,
+    write('NAZWA PRODUKTU: '),write(Nazwa),nl,
+    write('OPIS PRODUKTU: '),write(Opis),nl,
+    write('CENA: '),write(Cena),write('z³'),nl,
+    write('-----------------------------------------------------'),nl,
+    fail.

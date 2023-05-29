@@ -1,0 +1,16 @@
+zad2
+liczba_elem2([1,2]N).
+
+zad3
+konkat([3,4], [c,4,b],X).
+
+konkat(X,Y,[a,b,c]).
+
+konkat(_,Y,[3,5,7,s,4,c,b]), length(Y,3).
+
+konkat(X,Y,[3,5,7,s,4,c,b]), length(Y,3), konkat(Y,X,Z).
+
+TRACE JESZCZE
+
+zad5
+element(X,[1,2,1]).
